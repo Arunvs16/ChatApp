@@ -1,3 +1,4 @@
+import 'package:chat_app/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -32,20 +33,22 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // sign Up
 
-  Future signUp() async {
-    if (passwordConfirmed()) {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
-    }
-  }
+  void signUp() {
+    final auth = AuthService();
 
-  bool passwordConfirmed(){
-    if (passwordController.text.trim()== confirmPasswordController.text.trim()) {
-      return true;
-    }else {
-      return false;
+    // password match ->create user
+    if (passwordController.text == confirmPasswordController.text) {
+      try {
+        auth.signUpWithEmailAndPAssword(
+            emailController.text, passwordController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            content: Text(e.toString()),
+          ),
+        );
+      }
     }
   }
 

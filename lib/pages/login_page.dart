@@ -1,7 +1,7 @@
 import 'package:chat_app/components/my_button.dart';
 import 'package:chat_app/components/my_text_field.dart';
 import 'package:chat_app/pages/forgot_pw_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:chat_app/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,11 +21,23 @@ class _LoginPAgeState extends State<LoginPage> {
 
   //sign in
 
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text.trim(),
-      password: passwordController.text.trim(),
-    );
+  void signIn(BuildContext context) async {
+    // auth service
+    final authService = AuthService();
+
+    try {
+      await authService.signInWithEmailAndPAssword(
+        emailController.text,
+        passwordController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -112,7 +124,7 @@ class _LoginPAgeState extends State<LoginPage> {
 
                 //sign in button
 
-                MyButton(onTap: signIn, text: 'Sing In'),
+                MyButton(onTap: () => signIn(context), text: 'Sing In'),
 
                 const SizedBox(height: 50),
 
@@ -129,10 +141,12 @@ class _LoginPAgeState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: widget.onTap,
-                      
                       child: const Text(
                         'Register Now!',
-                        style: TextStyle(fontWeight: FontWeight.bold,color: Colors.blue,),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ],
