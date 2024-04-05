@@ -33,8 +33,8 @@ class _LoginPAgeState extends State<LoginPage> {
     } catch (e) {
       showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-          title: Text(e.toString()),
+        builder: (context) => const AlertDialog(
+          content: Text('Invalid!',textAlign: TextAlign.center,),
         ),
       );
     }
@@ -50,7 +50,7 @@ class _LoginPAgeState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -60,9 +60,10 @@ class _LoginPAgeState extends State<LoginPage> {
               children: [
                 //Logo
 
-                const Icon(
+                 Icon(
                   Icons.message,
                   size: 80,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
 
                 //welcome back message
@@ -137,7 +138,7 @@ class _LoginPAgeState extends State<LoginPage> {
                       'Not a member?',
                     ),
                     const SizedBox(
-                      width: 4,
+                      width: 10,
                     ),
                     GestureDetector(
                       onTap: widget.onTap,

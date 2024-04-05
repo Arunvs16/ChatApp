@@ -1,5 +1,4 @@
 import 'package:chat_app/services/auth/auth_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../components/my_button.dart';
@@ -50,12 +49,22 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       }
     }
+    // password dont match -> tell user to fix
+
+    else{
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+            content: Text("Password Doesn't match",textAlign: TextAlign.center,),
+          ),
+        );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade300,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -125,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       'Already a member?',
                     ),
                     const SizedBox(
-                      width: 4,
+                      width: 10,
                     ),
                     GestureDetector(
                       onTap: widget.onTap,

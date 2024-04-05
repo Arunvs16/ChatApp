@@ -19,12 +19,12 @@ class MyTextField extends StatelessWidget {
         hintText: hintext,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.grey.shade700,
+            color: Theme.of(context).colorScheme.tertiary,
           ),
         ),
-        focusedBorder: const OutlineInputBorder(
+        focusedBorder:  OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
         fillColor: Colors.grey.shade200,
