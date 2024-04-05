@@ -22,8 +22,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Signed In as : ' + user.email!,style: TextStyle(fontSize: 20),),
-            
+            Text(
+              'Signed In as : ' + user.email!,
+              style: const TextStyle(fontSize: 20),
+            ),
           ],
         ),
       ),
