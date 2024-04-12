@@ -9,7 +9,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'S E T T I N G S',
-          style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),

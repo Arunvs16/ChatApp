@@ -19,7 +19,7 @@ class _AuthGateState extends State<AuthGate> {
         builder: (context, snapshot) {
           // user is logged in
           if (snapshot.hasData) {
-            return const HomePage();
+            return  HomePage();
           }
 
           // user is not logged in

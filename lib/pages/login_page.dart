@@ -34,7 +34,10 @@ class _LoginPAgeState extends State<LoginPage> {
       showDialog(
         context: context,
         builder: (context) => const AlertDialog(
-          content: Text('Invalid!',textAlign: TextAlign.center,),
+          content: Text(
+            'Invalid!',
+            textAlign: TextAlign.center,
+          ),
         ),
       );
     }
@@ -60,7 +63,7 @@ class _LoginPAgeState extends State<LoginPage> {
               children: [
                 //Logo
 
-                 Icon(
+                Icon(
                   Icons.message,
                   size: 80,
                   color: Theme.of(context).colorScheme.primary,
@@ -134,8 +137,10 @@ class _LoginPAgeState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
+                    Text(
                       'Not a member?',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary),
                     ),
                     const SizedBox(
                       width: 10,
